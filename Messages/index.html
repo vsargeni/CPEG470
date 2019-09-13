@@ -1,3 +1,41 @@
 <?php
   // Open https://localhost/~ubuntu/index.php
   echo "<h1>Hello " . "PHP</h1>";
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    </head>
+<body>
+    <h1>Welcome to CISC pretenders anon</h1>
+    <form id="send" onsubmit = "sendReq()">
+    <input type ="textbox" id="userpost"> Username
+    <br>
+    <input type ="textbox" id="post"> Message
+    <br>
+    <button type = "submit">Send!</button>
+    </form>
+    <textarea readonly id="messagespace"> Hello there</textarea>
+    <button id="update" onclick= "click()">Update Messages</button>
+    <script>
+        async function sendReq(){
+            event.preventDefault();
+            await $.ajax({
+                type:"post",
+                url:"https://google.com/api",
+                data:{
+                    "author": document.querySelector("userpost").innertext,
+                    "content": document.querySelector('#post').innertext
+                }
+            })
+        }
+        $("userpost").prop('required',true);
+        $("post").prop('required',true);
+
+        function click(){
+            $.ajax({
+                type:"post",
+                url:"https://google.com/api"
+            }, 5000)
+        };
+    </script>
+</body>
